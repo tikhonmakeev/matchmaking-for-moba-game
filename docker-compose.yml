@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: matchmaking/server
+      target: builder
+    stop_signal: SIGINT
+    hostname: server
+    ports:
+      - '8000:8000'
+
+  solution:
+    build:
+      context: matchmaking/solution
+    command: /bin/sh -c "sleep 5 && python app.py"
+    stop_signal: SIGINT
