@@ -37,6 +37,9 @@ def log_match():
 
     if test_name is None or epoch is None:
         return jsonify({"error": "Missing parameters"}), 400
+    if epoch == "last":
+        return jsonify({"Nostradamus": "No... no... no..."}), 400
+
 
     file_path = os.path.join(current_app.root_path, "tests", test_name, f"test.json")
     if os.path.exists(file_path):
@@ -44,11 +47,12 @@ def log_match():
             epoches = json.load(file)
 
     new_epoch = epoches.get(epoch)
+    last_epoch = epoches.get("last")
 
     data = request.get_json()
     logger.info(data)
-    return jsonify({"epoch": new_epoch, "test_name": test_name}), 200
+    return jsonify({"epoch": new_epoch, "is_last_epoch": (last_epoch == new_epoch)}), 200
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8001)
