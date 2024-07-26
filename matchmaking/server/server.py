@@ -51,7 +51,7 @@ def log_match():
 
     data = request.get_json()
     logger.info(data)
-    return jsonify({"epoch": new_epoch, "is_last_epoch": (last_epoch == new_epoch)}), 200
+    return jsonify({"new_epoch": new_epoch, "is_last_epoch": (last_epoch == new_epoch)}), 200
 
 
 if __name__ == '__main__':

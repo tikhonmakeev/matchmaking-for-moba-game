@@ -5,7 +5,7 @@
 Пример:
 
 ```
-/matchmaking/match?test_name=test_0&epoch=00000000-0000-0000-0000-000000000000
+/matchmaking/users?test_name=test_0&epoch=00000000-0000-0000-0000-000000000000
 ```
 
 - `test_name` - имя теста, их можно найти в папке `/server/tests`.
