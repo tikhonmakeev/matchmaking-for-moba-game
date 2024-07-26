@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/UA2ruZYU)
-# Описание v6
+# Описание v7
 
 Представь, что ты разработчик игры, в которой сталкиваются две команды из пяти игроков. Каждая команда состоит из пяти
 ролей: верхняя (top), средняя (mid), нижняя (bot), поддержка (sup), лес (jungle).
@@ -59,7 +59,7 @@
 
 # Схема взаимодействия
 
-1) Отправляете GET запрос на `/matchmaking/match` с параметрами `test_name` и `epoch`
+1) Отправляете GET запрос на `/matchmaking/users` с параметрами `test_name` и `epoch`
 2) Распределяете полученных пользователей по командам
 3) Отправка POST запроса на `/matchmaking/match` с параметрами `test_name` и `epoch` и данными о командах. В ответе
    получаете `new_epoch`, который теперь используете в новых запросах и `is_last_epoch`.
