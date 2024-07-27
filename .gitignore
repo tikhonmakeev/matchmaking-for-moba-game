@@ -1,0 +1,6 @@
+test_generator.py
+match_pattern.json
+docker-compose-testing.yml
+local_tests
+test_server
+__pycache__
