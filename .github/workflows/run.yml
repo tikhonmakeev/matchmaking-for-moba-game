@@ -7,16 +7,22 @@ on:
 
 jobs:
   Testing:
-    timeout-minutes: 5
+    timeout-minutes: 10
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Start containers
-        run: docker-compose -f "docker-compose.yml" up -d --build
+      - name: Add tests
+        uses: central-university-scholarship/secret-tests@latest
 
-      - name: Stop containers
-        if: always()
-        run: docker-compose -f "docker-compose.yml" down
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up --build --abort-on-container-exit
+
+      - name: Archive tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-tests-${{ github.REPOSITORY_ID }}
+          path: ./matchmaking/server/secret_test/result.csv
+          if-no-files-found: error
