@@ -1,5 +1,5 @@
 from algorithm.roles_assignment import assign_roles_in_match
-from classes_with_methods.classes_description import Team, Player, Match
+from classes_with_methods.classes_description import Team, Match
 
 
 def teams_creator(players: list) -> dict:

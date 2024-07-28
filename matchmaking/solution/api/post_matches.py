@@ -1,4 +1,5 @@
 import requests
+from json import JSONDecodeError
 from logging import Logger
 
 
@@ -19,7 +20,7 @@ def post_matches(uri: str, port: str, cur_test_ind: int, cur_epoch: int, matches
 
     try:
         response.json()
-    except requests.exceptions.JSONDecodeError as e:
+    except JSONDecodeError as e:
         print("Поймал не json`чик")
         logger.exception(e)
         return None

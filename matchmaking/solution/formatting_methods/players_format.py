@@ -1,5 +1,5 @@
 from requests import Response
-from requests.exceptions import JSONDecodeError
+from json import JSONDecodeError
 from logging import Logger
 
 from classes_with_methods.classes_description import Player
