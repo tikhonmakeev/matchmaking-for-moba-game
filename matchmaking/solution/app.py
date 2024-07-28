@@ -10,7 +10,7 @@ if __name__ == "__main__":
     NUMBER_OF_TESTS = 20
     # SERVER_URI = "http://0.0.0.0"
     SERVER_URI = "http://server"
-    SERVER_PORT = "9000"
+    SERVER_PORT = "8000"
 
     for cur_test_ind in range(NUMBER_OF_TESTS):
         is_last_epoch = last_epoch_finished = False
