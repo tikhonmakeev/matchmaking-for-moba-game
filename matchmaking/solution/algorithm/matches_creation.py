@@ -7,6 +7,10 @@ from algorithm.rating_assignment import get_groups_by_rank
 
 
 def compute_new_matches(get_response: Response, players_in_queue: list, logger: Logger):
+    """На основе прибывших игроков, распределяет их, и тех, кто был до
+    
+    по матчам на основе рейтинга и предпочтений"""
+
     players_in_queue.extend(players_format(get_response, logger))
     res_epoch_matches = []
 
@@ -26,9 +30,5 @@ def compute_new_matches(get_response: Response, players_in_queue: list, logger: 
         res_epoch_matches.append(ten_player_match(players_for_match))
         for used_player in players_for_match:
             players_in_queue.remove(used_player)
-
-    # ЗДЕСЬ ВАЖНО обработать случай, когда в моем "ранге" не хватает игроков на матч
-    # думаю норм поискать игроков снизу, пока не взятых
-
 
     return matches_format_to_dict(res_epoch_matches)

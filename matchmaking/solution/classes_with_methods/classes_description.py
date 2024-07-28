@@ -20,8 +20,8 @@ class Match:
         self.team_red = team_red
         self.team_blue = team_blue
 
-
     def asdict(self):
+        """Форматирует матчи в том виде, который ждет сервер"""
         res_dict = {"match_id": self.match_id,
                     "teams": []}
         
