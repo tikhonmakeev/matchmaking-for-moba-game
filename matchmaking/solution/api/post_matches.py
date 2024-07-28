@@ -1,5 +1,5 @@
 import requests
-from requests.exceptions import JSONDecodeError
+from json import JSONDecodeError
 from logging import Logger
 
 
