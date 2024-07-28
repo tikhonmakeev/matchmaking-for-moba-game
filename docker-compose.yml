@@ -7,6 +7,8 @@ services:
     hostname: server
     ports:
       - '8000:8000'
+    volumes:
+      - './logs:/matchmaking/server/secret_tests/logs'
 
   solution:
     build:

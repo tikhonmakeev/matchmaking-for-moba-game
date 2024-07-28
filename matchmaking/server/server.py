@@ -1,8 +1,9 @@
-import logging
-from flask import Flask, request, jsonify, current_app
-import json
-import os
 import csv
+import json
+import logging
+import os
+
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 logger = logging.getLogger(__name__)
@@ -21,7 +22,7 @@ def get_waiting_users():
     if test_name is None or epoch is None:
         return jsonify({"error": "Missing parameters"}), 400
 
-    file_path = os.path.join(current_app.root_path, "tests", test_name, f"{epoch}.json")
+    file_path = os.path.join(app.root_path, 'secret_tests', test_name, f"{epoch}.json")
 
     if os.path.exists(file_path):
         with open(file_path, 'r') as file:
@@ -33,8 +34,6 @@ def get_waiting_users():
 
 @app.route('/matchmaking/match', methods=['POST'])
 def log_match():
-    result_path = os.path.join(current_app.root_path, "secret_tests", "result.csv")
-
     test_name = request.args.get('test_name')
     epoch = request.args.get('epoch')
 
@@ -43,7 +42,7 @@ def log_match():
     if epoch == "last":
         return jsonify({"Nostradamus": "No... no... no..."}), 400
 
-    file_path = os.path.join(current_app.root_path, "secret_tests", test_name, f"test.json")
+    file_path = os.path.join(app.root_path, 'secret_tests', test_name, f"test.json")
     if os.path.exists(file_path):
         with open(file_path, 'r') as file:
             epoches = json.load(file)
@@ -53,7 +52,7 @@ def log_match():
 
     data = request.get_json()
 
-    with open(result_path, 'a', newline='') as csvfile:
+    with open(os.path.join('/matchmaking/server/secret_tests/logs', 'result.csv'), 'a', newline='') as csvfile:
         result_writer = csv.writer(csvfile, delimiter=' ',
                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for match in data:
