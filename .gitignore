@@ -2,9 +2,11 @@ test_generator.py
 match_pattern.json
 docker-compose-testing.yml
 todelete.py
+matches_extractor.py
 result.csv
 new_result.csv
+matches.csv
 local_tests
 test_server
 __pycache__
-.~lock.new_result.csv#
+.~*

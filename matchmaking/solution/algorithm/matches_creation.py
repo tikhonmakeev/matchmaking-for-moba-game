@@ -24,7 +24,8 @@ def compute_new_matches(get_response: Response, players_in_queue: list, logger: 
     while len(players_in_queue) >= 10:
         players_for_match = players_in_queue[:10]
         res_epoch_matches.append(ten_player_match(players_for_match))
-        players_in_queue = players_in_queue[10:]
+        for used_player in players_for_match:
+            players_in_queue.remove(used_player)
 
     # ЗДЕСЬ ВАЖНО обработать случай, когда в моем "ранге" не хватает игроков на матч
     # думаю норм поискать игроков снизу, пока не взятых
