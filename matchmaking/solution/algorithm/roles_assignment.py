@@ -2,7 +2,13 @@ from scipy.optimize import linear_sum_assignment
 from numpy import ndarray, asarray
 
 
-ROLES_LIST = ['mid', 'sup', 'top', 'bot', 'jungle']
+ROLES_LIST = ['mid', 'sup', 'top', 'bot', 'jungle']   
+# Предпочитаемая позиция = сумма значений удовлетворенности игроков
+# 3, если игрок на первой в списке
+# 5, если на второй в списке
+# 8, если на третьей в списке
+# 13, если на четвертой в списке
+# 21, если на пятой в списке
 ROLES_POSITIONS_COST = {
                         "0":3,
                         "1":5,

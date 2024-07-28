@@ -1,20 +1,5 @@
-from pprint import pprint
-from roles_assignment import assign_roles_in_match
-from classes_description import Team, Player, Match
-
-
-def create_Player_instances(players: list) -> list:
-    """Создает из словарей объекты класса Player"""
-
-    players_instances = []
-    for player in players:
-        if not isinstance(player, dict):
-            print("Выброс игрока, скип")
-            continue
-        player_instance = Player(player["user_id"], int(player["mmr"]), player["roles"], int(player["waitingTime"]))
-        players_instances.append(player_instance)
-
-    return players_instances
+from algorithm.roles_assignment import assign_roles_in_match
+from classes_with_methods.classes_description import Team, Player, Match
 
 
 def teams_creator(players: list) -> dict:
@@ -45,7 +30,7 @@ def teams_creator(players: list) -> dict:
     return {"team_red": red_team, "team_blue": blue_team}
 
 
-def match_creator(players: list) -> Match:
+def ten_player_match(players: list) -> Match:
     """Создает матч из списка игроков(10 человек)
     
     Если их больше -- вернет `None`"""
@@ -56,9 +41,3 @@ def match_creator(players: list) -> Match:
     teams = teams_creator(players)
 
     return Match(team_red=teams["team_red"], team_blue=teams["team_blue"])
-
-
-def formatting_multiple_matches_as_dict(matches: list) -> list:
-    """Представляет объекты класса Match словарями нужного формата"""
-
-    return list(map(Match.asdict, matches))
