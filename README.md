@@ -90,3 +90,4 @@
 Вам нужно нажать `Synk fork`, а дальше `Update branch`
 ![synk_fork.png](docs/synk_fork.png)
 
+
