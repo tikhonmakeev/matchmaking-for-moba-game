@@ -26,7 +26,7 @@
 
 # Работа программы
 
-Запускается [app.py](matchmaking/app.py) с напрямую или с помощью docker-compose -f "docker-compose.yml" up --build --abort-on-container-exit 
+Запускается [app.py](matchmaking/app.py) с напрямую или с помощью `docker-compose -f "docker-compose.yml" up --build --abort-on-container-exit `
 
 Пусть у вас есть сервер на `http://server`
 # [Документация](docs/api_description.md)
