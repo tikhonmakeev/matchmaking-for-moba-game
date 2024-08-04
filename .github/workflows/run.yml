@@ -1,0 +1,28 @@
+name: Run tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Testing:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Add tests
+        uses: central-university-scholarship/secret-tests@latest
+
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up --build --abort-on-container-exit
+
+      - name: Archive tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-tests-${{ github.REPOSITORY_ID }}
+          path: ./logs/result.csv
+          if-no-files-found: error
